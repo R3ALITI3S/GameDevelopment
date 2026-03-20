@@ -1,3 +1,4 @@
+using Unity.Cinemachine;
 using UnityEngine;
 
 public class playerController : MonoBehaviour
@@ -15,13 +16,30 @@ public class playerController : MonoBehaviour
     float x;
     float z;
 
+    public static playerController Instance;
+    [SerializeField] private CinemachineCamera cam;
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+
+
+        if (Instance != null)
+        {
+            Destroy(Instance.gameObject);
+            return;
+        }
+
+        Instance = this;
+        GameObject.DontDestroyOnLoad(this.gameObject);
+        GameObject.DontDestroyOnLoad(this.cam); // work in progress
     }
+
+
 
     void Update()
     {
+
         
         x = Input.GetAxis("Horizontal");
         z = Input.GetAxis("Vertical");
