@@ -8,9 +8,10 @@ public class playerController : MonoBehaviour
 
     public LayerMask terrainLayer;
     public Rigidbody rb;
-    public SpriteRenderer sr;
-
+    private SpriteRenderer[] srs;
     public float groundCheckDistance = 2f;
+
+    public Animator anim;
 
     bool isGrounded;
     float x;
@@ -22,7 +23,8 @@ public class playerController : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-
+        srs = GetComponentsInChildren<SpriteRenderer>();
+        anim = GetComponentInChildren<Animator>();
 
         if (Instance != null)
         {
@@ -32,17 +34,18 @@ public class playerController : MonoBehaviour
 
         Instance = this;
         GameObject.DontDestroyOnLoad(this.gameObject);
-        GameObject.DontDestroyOnLoad(this.cam); // work in progress
+        GameObject.DontDestroyOnLoad(this.cam); 
     }
-
-
 
     void Update()
     {
-
-        
         x = Input.GetAxis("Horizontal");
         z = Input.GetAxis("Vertical");
+
+        if (Input.GetMouseButtonDown(0))
+        {
+            anim.SetTrigger("Fight");
+        }
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
@@ -59,11 +62,17 @@ public class playerController : MonoBehaviour
             }
         }
 
-        // Flip the sprite and keep it tht way until other
         if (x < 0)
-            sr.flipX = true;
+            transform.localScale = new Vector3(-1, 1, 1);
         else if (x > 0)
-            sr.flipX = false;
+            transform.localScale = new Vector3(1, 1, 1);
+
+        // animation (float-based)
+        float SpeedWolf = new Vector3(rb.linearVelocity.x, 0, rb.linearVelocity.z).magnitude;
+
+        anim.SetFloat("Speed", SpeedWolf);
+
+        Debug.Log(SpeedWolf);
     }
 
     void FixedUpdate()
@@ -75,5 +84,8 @@ public class playerController : MonoBehaviour
 
         // moveement
         rb.linearVelocity = new Vector3(x * speed, rb.linearVelocity.y, z * speed);
+
+        // animation based on actual movement
+        float horizontalSpeed = new Vector3(rb.linearVelocity.x, 0, rb.linearVelocity.z).magnitude;
     }
 }
