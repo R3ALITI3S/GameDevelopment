@@ -3,9 +3,6 @@ using UnityEngine;
 
 public class playerController : MonoBehaviour
 {
-    public float speed = 10f;
-    public float jumpForce = 10f;
-
     public LayerMask terrainLayer;
     public Rigidbody rb;
     private SpriteRenderer[] srs;
@@ -34,7 +31,7 @@ public class playerController : MonoBehaviour
 
         Instance = this;
         GameObject.DontDestroyOnLoad(this.gameObject);
-        GameObject.DontDestroyOnLoad(this.cam); 
+        GameObject.DontDestroyOnLoad(this.cam);
     }
 
     void Update()
@@ -54,7 +51,8 @@ public class playerController : MonoBehaviour
             if (isGrounded)
             {
                 Debug.Log("Jumping");
-                rb.linearVelocity = new Vector3(rb.linearVelocity.x, jumpForce, rb.linearVelocity.z);
+                // Apply jump force to the player
+                rb.linearVelocity = new Vector3(rb.linearVelocity.x, StatsManager.Instance.jumpForce, rb.linearVelocity.z);
             }
             else
             {
@@ -77,15 +75,17 @@ public class playerController : MonoBehaviour
 
     void FixedUpdate()
     {
-        // ground checking
+        // Ground checking
         isGrounded = Physics.Raycast(transform.position, Vector3.down, groundCheckDistance, terrainLayer);
 
         Debug.DrawRay(transform.position, Vector3.down * groundCheckDistance, Color.red); // draws a ray in the editor 
 
-        // moveement
-        rb.linearVelocity = new Vector3(x * speed, rb.linearVelocity.y, z * speed);
 
         // animation based on actual movement
         float horizontalSpeed = new Vector3(rb.linearVelocity.x, 0, rb.linearVelocity.z).magnitude;
+
+        // Movement
+        rb.linearVelocity = new Vector3(x * StatsManager.Instance.speed, rb.linearVelocity.y, z * StatsManager.Instance.speed);
+
     }
 }

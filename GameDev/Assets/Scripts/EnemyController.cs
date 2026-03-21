@@ -35,7 +35,7 @@ public class EnemyController : MonoBehaviour
     {
         isAttacking = true;
         yield return new WaitForSeconds(seconds);
-        DamagePlayer(damage);
+        DamagePlayer(StatsManager.Instance.enemyDamage);
         isAttacking = false;
     }
 
