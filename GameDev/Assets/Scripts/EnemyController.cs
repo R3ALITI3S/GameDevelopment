@@ -41,7 +41,6 @@ public class EnemyController : MonoBehaviour
 
     private void DamagePlayer(int damage)
     {
-        //player.GetComponent<playerController>(); Change to where the player stats will be.
-        //player.health -= damage;
+        StatsManager.Instance.currentHealth -= StatsManager.Instance.enemyDamage;
     }
 }
