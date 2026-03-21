@@ -1,5 +1,6 @@
 using Unity.Cinemachine;
 using UnityEngine;
+using System.Collections;
 
 public class playerController : MonoBehaviour
 {
@@ -9,7 +10,8 @@ public class playerController : MonoBehaviour
     public float groundCheckDistance = 2f;
 
     public Animator anim;
-
+    private bool isAttacking = false;
+    private float attackDelay = 1.4f;
     bool isGrounded;
     float x;
     float z;
@@ -41,7 +43,10 @@ public class playerController : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0))
         {
-            anim.SetTrigger("Fight");
+            if (!isAttacking)
+            {
+                StartCoroutine(AttackDelay(attackDelay));
+            }
         }
 
         if (Input.GetKeyDown(KeyCode.Space))
@@ -86,6 +91,13 @@ public class playerController : MonoBehaviour
 
         // Movement
         rb.linearVelocity = new Vector3(x * StatsManager.Instance.speed, rb.linearVelocity.y, z * StatsManager.Instance.speed);
+    }
 
+    private IEnumerator AttackDelay(float delay)
+    {
+        isAttacking = true;
+        anim.SetTrigger("Fight");
+        yield return new WaitForSeconds(delay);
+        isAttacking = false;
     }
 }
