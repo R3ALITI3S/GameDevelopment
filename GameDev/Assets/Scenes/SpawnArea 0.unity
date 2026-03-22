@@ -449,7 +449,7 @@ Transform:
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
   m_LocalRotation: {x: 0.14478788, y: 0, z: 0, w: 0.98946273}
-  m_LocalPosition: {x: 0.044062287, y: 7.6830406, z: -13.326812}
+  m_LocalPosition: {x: 0.041181184, y: 7.6830406, z: -13.326812}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2519,7 +2519,7 @@ Transform:
   m_GameObject: {fileID: 1357004810}
   serializedVersion: 2
   m_LocalRotation: {x: 0.14478788, y: 0, z: 0, w: 0.98946273}
-  m_LocalPosition: {x: 0.044062287, y: 7.6830406, z: -13.326812}
+  m_LocalPosition: {x: 0.041181184, y: 7.6830406, z: -13.326812}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3731,6 +3731,10 @@ PrefabInstance:
       propertyPath: squareChar
       value: 
       objectReference: {fileID: 1357004810}
+    - target: {fileID: 7949398688402206785, guid: e1a52f22d43d93b4db51dd2e911dd225, type: 3}
+      propertyPath: enemyLayer.m_Bits
+      value: 128
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 7951082752537094747, guid: e1a52f22d43d93b4db51dd2e911dd225, type: 3}
