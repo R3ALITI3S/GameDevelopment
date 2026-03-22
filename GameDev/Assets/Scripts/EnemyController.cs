@@ -9,11 +9,16 @@ public class EnemyController : MonoBehaviour
     private GameObject player;
     public float moveSpeed;
     public int damage;
-    private bool isAttacking = false;
+    public bool isAttacking;
+    public bool Walk;
+
+
+    public Animator anim;
 
     private void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
+        anim = GetComponentInChildren<Animator>();
     }
     void Update()
     {
@@ -23,11 +28,13 @@ public class EnemyController : MonoBehaviour
             if (!isAttacking)
             {
                 StartCoroutine(AttackPlayer(attackDuration));
+                anim.SetBool("Walk", true);
             }
         }
         else if (playerDistance <= aggroDistance && playerDistance >= attackDistance)
         {
             transform.position = Vector3.MoveTowards(transform.position, player.transform.position, moveSpeed * Time.deltaTime);
+            anim.SetBool("Walk", false);
         }
     }
 
