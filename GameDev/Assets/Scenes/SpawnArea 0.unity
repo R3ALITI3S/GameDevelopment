@@ -449,7 +449,7 @@ Transform:
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
   m_LocalRotation: {x: 0.14478788, y: 0, z: 0, w: 0.98946273}
-  m_LocalPosition: {x: 0.041142296, y: 7.6830406, z: -13.326812}
+  m_LocalPosition: {x: 0.044062287, y: 7.6830406, z: -13.326812}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1105,6 +1105,7 @@ GameObject:
   - component: {fileID: 565316753}
   - component: {fileID: 565316752}
   - component: {fileID: 565316756}
+  - component: {fileID: 565316757}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -1205,6 +1206,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 565316751}
   m_CullTransparentMesh: 1
+--- !u!114 &565316757
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 565316751}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08139a264e68b2a42948df0951ba10ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DontDestroyOnLoad
 --- !u!1001 &824975244
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2506,7 +2519,7 @@ Transform:
   m_GameObject: {fileID: 1357004810}
   serializedVersion: 2
   m_LocalRotation: {x: 0.14478788, y: 0, z: 0, w: 0.98946273}
-  m_LocalPosition: {x: 0.041142296, y: 7.6830406, z: -13.326812}
+  m_LocalPosition: {x: 0.044062287, y: 7.6830406, z: -13.326812}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2855,6 +2868,10 @@ PrefabInstance:
     - target: {fileID: 3900108755062758285, guid: d9fa78e8c3c4f2b4b8f7f77ca8426cca, type: 3}
       propertyPath: m_Name
       value: ConversationManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 3900108755062758285, guid: d9fa78e8c3c4f2b4b8f7f77ca8426cca, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3900108755196472086, guid: d9fa78e8c3c4f2b4b8f7f77ca8426cca, type: 3}
       propertyPath: OptionImage
