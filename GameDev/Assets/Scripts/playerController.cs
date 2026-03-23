@@ -19,6 +19,7 @@ public class playerController : MonoBehaviour
     public static playerController Instance;
     [SerializeField] private CinemachineCamera cam;
 
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
