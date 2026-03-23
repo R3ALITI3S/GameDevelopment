@@ -56,6 +56,7 @@ public class playerController : MonoBehaviour
 
             if (isGrounded)
             {
+                anim.SetTrigger("Jump");
                 Debug.Log("Jumping");
                 // Apply jump force to the player
                 rb.linearVelocity = new Vector3(rb.linearVelocity.x, StatsManager.Instance.jumpForce, rb.linearVelocity.z);
@@ -76,7 +77,7 @@ public class playerController : MonoBehaviour
 
         anim.SetFloat("Speed", SpeedWolf);
 
-        Debug.Log(SpeedWolf);
+        // Debug.Log(SpeedWolf);
     }
 
     void FixedUpdate()

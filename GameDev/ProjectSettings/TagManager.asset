@@ -55,6 +55,9 @@ TagManager:
   - name: Player
     uniqueID: 134305235
     locked: 0
+  - name: PlantsInFrontOfPlayer
+    uniqueID: 160125431
+    locked: 0
   m_RenderingLayers:
   - Default
   - Light Layer 1
